@@ -1,0 +1,93 @@
+/* 🌄 WALLPAPER */
+#app-mount {
+    background: url("https://i.pinimg.com/736x/2c/a0/33/2ca0339b443a95dc4678c0b78d566542.jpg")
+    center/cover no-repeat fixed !important;
+}
+
+/* 🔆 FUNDO EQUILIBRADO (nem escuro nem claro demais) */
+body, html {
+    background: transparent !important;
+}
+
+[class*="chat"],
+[class*="chatContent"] {
+    background: rgba(0, 0, 0, 0.07) !important;
+}
+
+nav {
+    background: rgba(0, 0, 0, 0.10) !important;
+}
+
+[class*="container_"],
+[class*="bg_"],
+[class*="scroller"] {
+    background: transparent !important;
+}
+
+/* 🌧️ CHUVA OTIMIZADA (MENOS CAMADAS, MESMA PERCEPÇÃO) */
+@keyframes rainOptimized {
+    0% {
+        transform: translate3d(var(--x, 0px), -10vh, 0);
+        opacity: 0;
+    }
+    12% {
+        opacity: 0.75;
+    }
+    100% {
+        transform: translate3d(calc(var(--x, 0px) + 35px), 110vh, 0);
+        opacity: 0;
+    }
+}
+
+/* 🌧️ CAMADA 1 (principal) */
+#app-mount::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(255,255,255,0.75) 1px, transparent 2px),
+        radial-gradient(circle at 40% 60%, rgba(255,255,255,0.70) 1px, transparent 2px),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.72) 1px, transparent 2px),
+        radial-gradient(circle at 85% 75%, rgba(255,255,255,0.74) 1px, transparent 2px);
+    animation: rainOptimized 0.85s linear infinite;
+    filter: blur(0.3px);
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+/* 🌧️ CAMADA 2 (leve offset para dar profundidade) */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 70%, rgba(255,255,255,0.70) 1px, transparent 2px),
+        radial-gradient(circle at 50% 30%, rgba(255,255,255,0.73) 1px, transparent 2px),
+        radial-gradient(circle at 80% 50%, rgba(255,255,255,0.71) 1px, transparent 2px);
+    animation: rainOptimized 0.92s linear infinite;
+    animation-delay: 0.12s;
+    filter: blur(0.3px);
+    opacity: 0.80;
+    pointer-events: none;
+}
+
+/* 🌧️ CAMADA 3 (bem leve, só profundidade) */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 10% 60%, rgba(255,255,255,0.68) 1px, transparent 2px),
+        radial-gradient(circle at 60% 80%, rgba(255,255,255,0.70) 1px, transparent 2px),
+        radial-gradient(circle at 90% 20%, rgba(255,255,255,0.69) 1px, transparent 2px);
+    animation: rainOptimized 0.95s linear infinite;
+    animation-delay: 0.22s;
+    filter: blur(0.3px);
+    opacity: 0.78;
+    pointer-events: none;
+}
+
+/* limpeza */
+* {
+    text-shadow: none !important;
+}
